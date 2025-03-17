@@ -1,4 +1,5 @@
 import './App.css'
+import ListItem from "./components/ListItem"
 
 function App() {
   const data = [
@@ -23,16 +24,37 @@ function App() {
     <>
       <h1>Todo App !</h1>
       <ol>
-        <li>
-          <h2>Have Breakfast</h2>
-          <p>2 eggs on toast</p>
-          <p>7am</p>
-        </li>
-        <li>
-          <h2>{data[1].title}</h2>
-          <p>{data[1].description}</p>
-          <p>{data[1].time}</p>
-        </li>
+          {/* <ListItem task={data[0]}/>
+          <ListItem task={data[1]}/>
+          <ListItem task={data[2]}/> */}
+
+          {/* {data.map((task, index) => {
+            return <ListItem key={index} task={task} index={index}/>
+          })} */}
+
+          {data.map((task, index) => (
+            <ListItem 
+                key={index}
+                task={task}
+                index={index}
+            />
+          ))}
+
+         {/* <li>
+            <h2>Have Breakfast</h2>
+            <p>2 eggs on toast</p>
+            <p>7am</p>
+          </li>
+          <li>
+            <h2>{data[1].title}</h2>
+            <p>{data[1].description}</p>
+            <p>{data[1].time}</p>
+          </li> */}
+
+        {/*  an example with passing multiple props
+            <ListItem title = {data[0].title}
+            description = {data[0].description}
+            time = {data[0].time}/> */}
       </ol>
     </>
   )
