@@ -1,33 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const data = [
+    {
+      title: "Have Breakfast",
+      description: "2 eggs on toast",
+      time: "7am"
+    },
+    {
+      title: "Cardio",
+      description: "jog 3 miles",
+      time: "8am"
+    },
+    {
+      title: "Start work",
+      description: "Log onto my machine and open up all relevant software",
+      time: "9am"
+    }
+  ]
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Todo App !</h1>
+      <ol>
+        <li>
+          <h2>Have Breakfast</h2>
+          <p>2 eggs on toast</p>
+          <p>7am</p>
+        </li>
+        <li>
+          <h2>{data[1].title}</h2>
+          <p>{data[1].description}</p>
+          <p>{data[1].time}</p>
+        </li>
+      </ol>
     </>
   )
 }
