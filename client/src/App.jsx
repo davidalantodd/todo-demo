@@ -24,11 +24,15 @@ function App() {
     }
   ]
 
+  const handleClick = () => {
+    setIsTodoListVisible(!isTodoListVisible)
+    // setIsTodoListVisible(current => !current) also works!
+  }
+
   return (
     <>
-
       { !isTodoListVisible ? (
-        <button onClick={() => setIsTodoListVisible(true)}>Show Todo List</button>
+        <button onClick={handleClick}>Show Todo List</button>
       ) : (
         <h1>Todo App !</h1>
       )}
@@ -42,7 +46,7 @@ function App() {
             />
           ))}
           {/* will set state to false when button is clicked */}
-        <button onClick={() => setIsTodoListVisible(false)}>Hide Todo List</button>
+        <button onClick={handleClick}>Hide Todo List</button>
         </ol>
       )}
     </>
