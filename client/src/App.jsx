@@ -21,6 +21,11 @@ function App() {
       title: "Start work",
       description: "Log onto my machine and open up all relevant software",
       time: "9am"
+    },
+    {
+      title: "Coffee break",
+      description: "enjoy!",
+      time: "10am"
     }
   ]
 
