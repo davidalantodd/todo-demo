@@ -1,5 +1,6 @@
 import './App.css'
 import ListItem from "./components/ListItem"
+import ListItemClassComponent from './components/ListItemClassComponent'
 
 function App() {
   const data = [
@@ -33,7 +34,7 @@ function App() {
           })} */}
 
           {data.map((task, index) => (
-            <ListItem 
+            <ListItemClassComponent 
                 key={index}
                 task={task}
                 index={index}
