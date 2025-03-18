@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import './App.css'
 import ListItem from "./components/ListItem"
-import ListItemClassComponent from './components/ListItemClassComponent'
 
 function App() {
+  // initialize our state
+  const [isTodoListVisible, setIsTodoListVisible] = useState(false)
+
   const data = [
     {
       title: "Have Breakfast",
@@ -23,40 +26,25 @@ function App() {
 
   return (
     <>
-      <h1>Todo App !</h1>
-      <ol>
-          {/* <ListItem task={data[0]}/>
-          <ListItem task={data[1]}/>
-          <ListItem task={data[2]}/> */}
 
-          {/* {data.map((task, index) => {
-            return <ListItem key={index} task={task} index={index}/>
-          })} */}
-
+      { !isTodoListVisible ? (
+        <button onClick={() => setIsTodoListVisible(true)}>Show Todo List</button>
+      ) : (
+        <h1>Todo App !</h1>
+      )}
+      {/* conditionally render todo list only if isTodoListVisible state is true */}
+      {isTodoListVisible && (<ol>
           {data.map((task, index) => (
-            <ListItemClassComponent 
+            <ListItem 
                 key={index}
                 task={task}
                 index={index}
             />
           ))}
-
-         {/* <li>
-            <h2>Have Breakfast</h2>
-            <p>2 eggs on toast</p>
-            <p>7am</p>
-          </li>
-          <li>
-            <h2>{data[1].title}</h2>
-            <p>{data[1].description}</p>
-            <p>{data[1].time}</p>
-          </li> */}
-
-        {/*  an example with passing multiple props
-            <ListItem title = {data[0].title}
-            description = {data[0].description}
-            time = {data[0].time}/> */}
-      </ol>
+          {/* will set state to false when button is clicked */}
+        <button onClick={() => setIsTodoListVisible(false)}>Hide Todo List</button>
+        </ol>
+      )}
     </>
   )
 }

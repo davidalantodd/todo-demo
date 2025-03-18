@@ -1,5 +1,3 @@
-// function ListItem(properties) {
-//     const { task } = properties
 function ListItem( { task, index } ) {
 
     return (
@@ -13,17 +11,3 @@ function ListItem( { task, index } ) {
 }
 
 export default ListItem
-
-/*
-example to destructure multiple props
-  function ListItem({ title, description, time }) {
-
-    return (
-        <li>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            <p>{time}</p>
-        </li>
-    )
-}
-*/
