@@ -9,6 +9,7 @@ App, ol {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0px;
 }
 
 * {
@@ -18,17 +19,23 @@ App, ol {
 
 .task {
   border: 3px solid white;
-  border-radius: 10%;
-  width: 50%;
-  margin: 1em;
-  padding: 1em;
+  border-radius: 20px;
+  width: 100%;
+  margin: .5em;
+  padding: .5em;
   background-color: rgb(123, 166, 236);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center;
 }
 
 .task * {
   background-color: rgb(123, 166, 236);
 }
 
-.task p {
-  font-size: larger;
+.form{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
