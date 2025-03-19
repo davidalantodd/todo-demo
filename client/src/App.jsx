@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 import ListItem from "./components/ListItem"
+import Form from "./components/Form"
 
 function App() {
-  // initialize our state
   const [isTodoListVisible, setIsTodoListVisible] = useState(false)
 
-  const data = [
+  // create state from data array
+  const [data, setData] = useState([
     {
       title: "Have Breakfast",
       description: "2 eggs on toast",
@@ -27,11 +28,10 @@ function App() {
       description: "enjoy!",
       time: "10am"
     }
-  ]
+  ])
 
   const handleClick = () => {
     setIsTodoListVisible(!isTodoListVisible)
-    // setIsTodoListVisible(current => !current) also works!
   }
 
   return (
@@ -41,7 +41,7 @@ function App() {
       ) : (
         <h1>Todo App !</h1>
       )}
-      {/* conditionally render todo list only if isTodoListVisible state is true */}
+      <Form data={data} setData={setData} />
       {isTodoListVisible && (<ol>
           {data.map((task, index) => (
             <ListItem 
@@ -50,7 +50,6 @@ function App() {
                 index={index}
             />
           ))}
-          {/* will set state to false when button is clicked */}
         <button onClick={handleClick}>Hide Todo List</button>
         </ol>
       )}
