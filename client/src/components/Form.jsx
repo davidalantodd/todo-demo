@@ -23,7 +23,7 @@ function Form({ data, setData }) {
     }
 
     return (
-        <form onSubmit={submitHandler} >
+        <form onSubmit={submitHandler} className="form">
             <input
                 type="text"
                 placeholder='Title'
