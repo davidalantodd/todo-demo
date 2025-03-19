@@ -1,4 +1,4 @@
-function ListItem( { task, index } ) {
+function ListItem( { task } ) {
 
     return (
         <li className="task">

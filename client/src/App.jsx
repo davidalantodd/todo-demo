@@ -5,6 +5,7 @@ import Form from "./components/Form"
 
 function App() {
   const [isTodoListVisible, setIsTodoListVisible] = useState(false)
+  const [isFormVisible, setIsFormVisible] = useState(false)
 
   // create state from data array
   const [data, setData] = useState([
@@ -34,6 +35,10 @@ function App() {
     setIsTodoListVisible(!isTodoListVisible)
   }
 
+  const handleToggleForm = () => {
+    setIsFormVisible(!isFormVisible)
+  }
+
   return (
     <>
       { !isTodoListVisible ? (
@@ -41,7 +46,15 @@ function App() {
       ) : (
         <h1>Todo App !</h1>
       )}
-      <Form data={data} setData={setData} />
+      { !isFormVisible ? (
+        <button onClick={handleToggleForm}>Show Form</button>
+      ) : (
+        <>
+          <Form data={data} setData={setData} />
+          <button onClick={handleToggleForm}>Hide Form</button>
+        </>
+      )
+      }
       {isTodoListVisible && (<ol>
           {data.map((task, index) => (
             <ListItem 
