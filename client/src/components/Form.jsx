@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Form() {
+function Form({setNewTask}) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [time, setTime] = useState('')
@@ -8,7 +8,7 @@ function Form() {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        const newTask = {
+        const newTodo = {
             title,
             description,
             time
@@ -18,9 +18,12 @@ function Form() {
         await fetch("http://localhost:3000/todo", {
             method: "POST",
             headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(newTask)
+            body: JSON.stringify(newTodo)
         })
         
+        // set the state to be true, so we trigger a rerender (which means a new GET request when this changes)
+        setNewTask(true)
+
         setTitle('')
         setDescription('')
         setTime('')

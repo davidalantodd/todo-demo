@@ -11,6 +11,9 @@ function App() {
   // get rid of hardcoded data so we can fetch todos from backend
   const [data, setData] = useState([])
 
+  // create piece of state (boolean) to track when new tasks are added via the form
+  const [newTask, setNewTask] = useState(false)
+
   const handleClick = () => {
     setIsTodoListVisible(!isTodoListVisible)
   }
@@ -30,7 +33,8 @@ function App() {
 
   useEffect(() => {
     fetchTodos()
-  }, [])
+    // put the state that will trigger a rerender into the dependency array
+  }, [newTask])
 
   return (
     <>
@@ -43,7 +47,7 @@ function App() {
         <button onClick={handleToggleForm}>Show Form</button>
       ) : (
         <>
-          <Form data={data} setData={setData} />
+          <Form setNewTask={setNewTask} />
           <button onClick={handleToggleForm}>Hide Form</button>
         </>
       )
