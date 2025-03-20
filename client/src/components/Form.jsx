@@ -1,22 +1,26 @@
 import { useState } from 'react'
 
-function Form({ data, setData }) {
+function Form() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [time, setTime] = useState('')
 
 
-    const submitHandler = (e) => {
-        //prevent default behavior
+    const submitHandler = async (e) => {
         e.preventDefault()
         const newTask = {
             title,
             description,
             time
         }
-        // use setter method to change data state to add newTask to the array
-        setData([...data, newTask])
-        //clear our input states
+
+        // create a new todo in the database by making a POST request
+        await fetch("http://localhost:3000/todo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(newTask)
+        })
+        
         setTitle('')
         setDescription('')
         setTime('')
