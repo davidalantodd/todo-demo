@@ -1,4 +1,5 @@
-import { useState } from 'react'
+// import useEffect
+import { useEffect, useState } from 'react'
 import './App.css'
 import ListItem from "./components/ListItem"
 import Form from "./components/Form"
@@ -7,29 +8,8 @@ function App() {
   const [isTodoListVisible, setIsTodoListVisible] = useState(false)
   const [isFormVisible, setIsFormVisible] = useState(false)
 
-  // create state from data array
-  const [data, setData] = useState([
-    {
-      title: "Have Breakfast",
-      description: "2 eggs on toast",
-      time: "7am"
-    },
-    {
-      title: "Cardio",
-      description: "jog 3 miles",
-      time: "8am"
-    },
-    {
-      title: "Start work",
-      description: "Log onto my machine and open up all relevant software",
-      time: "9am"
-    },
-    {
-      title: "Coffee break",
-      description: "enjoy!",
-      time: "10am"
-    }
-  ])
+  // get rid of hardcoded data so we can fetch todos from backend
+  const [data, setData] = useState([])
 
   const handleClick = () => {
     setIsTodoListVisible(!isTodoListVisible)
@@ -38,6 +18,19 @@ function App() {
   const handleToggleForm = () => {
     setIsFormVisible(!isFormVisible)
   }
+
+  async function fetchTodos() {
+    // make a GET request to http://localhost:3000/todo
+    const response = await fetch("http://localhost:3000/todo")
+    const todos = await response.json()
+
+    // set the data state to be the API response data
+    setData(todos)
+  }
+
+  useEffect(() => {
+    fetchTodos()
+  }, [])
 
   return (
     <>
